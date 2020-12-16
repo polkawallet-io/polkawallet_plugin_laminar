@@ -50,10 +50,12 @@ class TokenIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        child: tokenIcons[symbol.toUpperCase()] ??
-            CircleAvatar(
-              child: Text(symbol.toUpperCase().substring(0, 2)),
-            ),
-        width: 32);
+      child: tokenIcons[symbol.toUpperCase()] ??
+          CircleAvatar(
+            child: Text(symbol.toUpperCase().substring(0, 2)),
+          ),
+      width: 32,
+      height: 32,
+    );
   }
 }

@@ -16,8 +16,8 @@ const node_list = [
 
 const laminar_plugin_cache_key = 'plugin_laminar';
 
-// const acala_token_decimals = 18;
-// const acala_stable_coin = 'AUSD';
-// const acala_stable_coin_view = 'aUSD';
+const laminar_token_decimals = 18;
+const acala_stable_coin = 'AUSD';
+const acala_stable_coin_view = 'aUSD';
 // const acala_token_ren_btc = 'RENBTC';
 // const acala_token_ren_btc_view = 'renBTC';

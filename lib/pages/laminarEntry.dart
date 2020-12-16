@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapPage.dart';
 import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/utils/i18n.dart';
 import 'package:polkawallet_ui/components/entryPageCard.dart';
@@ -75,8 +76,8 @@ class _LaminarEntryState extends State<LaminarEntry> {
                                 height: 56),
                             color: Theme.of(context).primaryColor,
                           ),
-                          // onTap: () => Navigator.of(context)
-                          //     .pushNamed(LaminarSwapPage.route),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(LaminarSwapPage.route),
                         ),
                       ),
                       Padding(

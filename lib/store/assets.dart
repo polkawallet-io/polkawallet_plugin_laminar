@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:polkawallet_plugin_laminar/store/cache/storeCache.dart';
+import 'package:polkawallet_plugin_laminar/store/types/laminarCurrenciesData.dart';
 import 'package:polkawallet_sdk/plugin/store/balances.dart';
 
 part 'assets.g.dart';
@@ -12,14 +13,13 @@ abstract class _AssetsStore with Store {
   _AssetsStore(this.cache);
 
   final StoreCache cache;
-  final String cacheTxsTransferKey = 'transfer_txs';
 
   @observable
   Map<String, TokenBalanceData> tokenBalanceMap =
       Map<String, TokenBalanceData>();
 
   @observable
-  Map<String, BigInt> prices = {};
+  Map<String, LaminarPriceData> tokenPrices = {};
 
   @action
   void setTokenBalanceMap(List<TokenBalanceData> list) {
@@ -31,7 +31,11 @@ abstract class _AssetsStore with Store {
   }
 
   @action
-  void setPrices(Map<String, BigInt> data) {
-    prices = data;
+  void setTokenPrices(List prices) {
+    final Map<String, LaminarPriceData> res = {};
+    prices.forEach((e) {
+      res[e['tokenId']] = LaminarPriceData.fromJson(e);
+    });
+    tokenPrices = res;
   }
 }

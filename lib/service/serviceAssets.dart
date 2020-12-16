@@ -1,3 +1,4 @@
+import 'package:polkawallet_plugin_laminar/common/constants.dart';
 import 'package:polkawallet_plugin_laminar/polkawallet_plugin_laminar.dart';
 import 'package:polkawallet_plugin_laminar/store/index.dart';
 import 'package:polkawallet_sdk/plugin/store/balances.dart';
@@ -12,6 +13,7 @@ class ServiceAssets {
 
   final Map _tokenBalances = {};
   final _tokenBalanceChannel = 'tokenBalance';
+  final _priceSubscribeChannel = 'LaminarPrices';
 
   Future<void> _subscribeTokenBalances(
       String address, List tokens, Function(Map) callback) async {
@@ -30,8 +32,9 @@ class ServiceAssets {
 
   Future<void> subscribeTokenBalances(
       String address, Function(List<TokenBalanceData>) callback) async {
-    final tokens =
-        List.of(plugin.networkConst['syntheticTokens']['syntheticCurrencyIds']);
+    final List tokens = [acala_stable_coin];
+    tokens
+        .addAll(plugin.networkConst['syntheticTokens']['syntheticCurrencyIds']);
 
     _tokenBalances.clear();
 
@@ -57,5 +60,15 @@ class ServiceAssets {
     tokens.forEach((e) {
       plugin.sdk.api.unsubscribeMessage('$_tokenBalanceChannel$e');
     });
+  }
+
+  Future<void> subscribeTokenPrices() async {
+    await plugin.sdk.api.service.webView.subscribeMessage(
+      'laminar.subscribeMessage(laminarApi, "currencies", "oracleValues", ["Aggregated"], "$_priceSubscribeChannel")',
+      _priceSubscribeChannel,
+      (List res) {
+        store.assets.setTokenPrices(res);
+      },
+    );
   }
 }

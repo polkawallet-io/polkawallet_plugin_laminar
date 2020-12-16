@@ -3,6 +3,8 @@ library polkawallet_plugin_laminar;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapHistoryPage.dart';
+import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapPage.dart';
 import 'package:polkawallet_sdk/api/types/networkParams.dart';
 import 'package:polkawallet_sdk/plugin/homeNavItem.dart';
 import 'package:polkawallet_sdk/plugin/index.dart';
@@ -70,6 +72,9 @@ class PluginLaminar extends PolkawalletPlugin {
       // TransferPage.route: (_) => TransferPage(this, keyring),
 
       // swap pages
+      LaminarSwapPage.route: (_) => LaminarSwapPage(this, keyring),
+      LaminarSwapHistoryPage.route: (_) =>
+          LaminarSwapHistoryPage(this, keyring),
     };
   }
 
@@ -93,7 +98,7 @@ class PluginLaminar extends PolkawalletPlugin {
   void _loadCacheData(KeyPairData acc) {
     balances.setTokens([]);
 
-    // _store.swap.loadCache(acc.pubKey);
+    _store.swap.loadCache(acc.pubKey);
   }
 
   @override
@@ -110,6 +115,7 @@ class PluginLaminar extends PolkawalletPlugin {
   Future<void> onStarted(Keyring keyring) async {
     _service.connected = true;
 
+    _service.assets.subscribeTokenPrices();
     if (keyring.current.address != null) {
       _subscribeTokenBalances(keyring.current);
     }

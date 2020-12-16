@@ -24,18 +24,18 @@ mixin _$AssetsStore on _AssetsStore, Store {
     });
   }
 
-  final _$pricesAtom = Atom(name: '_AssetsStore.prices');
+  final _$tokenPricesAtom = Atom(name: '_AssetsStore.tokenPrices');
 
   @override
-  Map<String, BigInt> get prices {
-    _$pricesAtom.reportRead();
-    return super.prices;
+  Map<String, LaminarPriceData> get tokenPrices {
+    _$tokenPricesAtom.reportRead();
+    return super.tokenPrices;
   }
 
   @override
-  set prices(Map<String, BigInt> value) {
-    _$pricesAtom.reportWrite(value, super.prices, () {
-      super.prices = value;
+  set tokenPrices(Map<String, LaminarPriceData> value) {
+    _$tokenPricesAtom.reportWrite(value, super.tokenPrices, () {
+      super.tokenPrices = value;
     });
   }
 
@@ -53,11 +53,11 @@ mixin _$AssetsStore on _AssetsStore, Store {
   }
 
   @override
-  void setPrices(Map<String, BigInt> data) {
+  void setTokenPrices(List<dynamic> prices) {
     final _$actionInfo = _$_AssetsStoreActionController.startAction(
-        name: '_AssetsStore.setPrices');
+        name: '_AssetsStore.setTokenPrices');
     try {
-      return super.setPrices(data);
+      return super.setTokenPrices(prices);
     } finally {
       _$_AssetsStoreActionController.endAction(_$actionInfo);
     }
@@ -67,7 +67,7 @@ mixin _$AssetsStore on _AssetsStore, Store {
   String toString() {
     return '''
 tokenBalanceMap: ${tokenBalanceMap},
-prices: ${prices}
+tokenPrices: ${tokenPrices}
     ''';
   }
 }
