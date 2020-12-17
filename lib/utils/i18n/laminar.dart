@@ -7,6 +7,11 @@ const Map<String, String> enLaminar = {
   'flow.margin.brief':
       'The collateralized margin trading protocol allows user to trade leveraged long or short Forex pairs such as EURUSD and cryptoassets such as BTCUSD.',
   'flow.margin.soon': 'Coming soon.',
+  'faucet.title': 'Faucet',
+  'faucet.brief': 'Get test Tokens of Acala testnet.',
+  'faucet.ok': 'Test Tokens were sent.',
+  'faucet.limit': 'Exceeds limited amount.',
+  'faucet.error': 'Request error, try again later.',
   'dex.title': 'Swap',
   'dex.brief':
       'Decentralized token exchange with the liquid pool of the Acala platform.',
@@ -57,6 +62,11 @@ const Map<String, String> zhLaminar = {
   'flow.margin': '杠杆交易',
   'flow.margin.brief': '使用高达 20x 杠杆交易外汇交易对、数字资产交易对等。',
   'flow.margin.soon': '即将开启',
+  'faucet.title': '水龙头',
+  'faucet.brief': '领取 Acala 测试网使用的测试 Token.',
+  'faucet.ok': '领取成功。',
+  'faucet.limit': '超过领取次数了哦。',
+  'faucet.error': '可能领取姿势不太对，等会儿再试试吧。',
   'dex.title': '兑换',
   'dex.brief': '与 Acala 平台的流动性池进行去中心化 Token 交易.',
   'dex.pay': '支付数量',

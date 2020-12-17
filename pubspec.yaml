@@ -51,6 +51,7 @@ flutter:
     - assets/images/AUSD.png
     - assets/images/swap.svg
     - assets/images/loan.svg
+    - assets/images/faucet.svg
     - assets/images/assets_up.png
     - assets/images/assets_down.png
 
