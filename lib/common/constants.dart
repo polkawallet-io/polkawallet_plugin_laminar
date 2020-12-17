@@ -19,5 +19,26 @@ const laminar_plugin_cache_key = 'plugin_laminar';
 const laminar_token_decimals = 18;
 const acala_stable_coin = 'AUSD';
 const acala_stable_coin_view = 'aUSD';
-// const acala_token_ren_btc = 'RENBTC';
-// const acala_token_ren_btc_view = 'renBTC';
+
+const GraphQLConfig = {
+  'httpUri': 'https://indexer.laminar-chain.laminar.one/v1/graphql',
+  'wsUri': 'wss://indexer.laminar-chain.laminar.one/v1/graphql',
+};
+const Map<String, String> margin_pool_name_map = {
+  '0': 'Laminar',
+  '1': 'Crypto',
+  '2': 'FX',
+};
+const Map<String, String> synthetic_pool_name_map = {
+  '0': 'Laminar',
+  '1': 'Crypto',
+  '2': 'FX',
+};
+const Map<String, String> laminar_leverage_map = {
+  'Two': 'x2',
+  'Three': 'x3',
+  'Five': 'x5',
+  'Ten': 'x10',
+  'Twenty': 'x20',
+};
+final BigInt laminarIntDivisor = BigInt.parse('1000000000000000000');

@@ -14,7 +14,6 @@ abstract class _SwapStore with Store {
   _SwapStore(this.cache);
 
   final StoreCache cache;
-  final String cacheTxsTransferKey = 'swap_txs';
 
   @observable
   ObservableList<LaminarTxSwapData> txs = ObservableList<LaminarTxSwapData>();

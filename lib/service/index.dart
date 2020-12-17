@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:polkawallet_plugin_laminar/polkawallet_plugin_laminar.dart';
 import 'package:polkawallet_plugin_laminar/service/serviceAssets.dart';
+import 'package:polkawallet_plugin_laminar/service/serviceMargin.dart';
 import 'package:polkawallet_plugin_laminar/service/serviceSwap.dart';
 import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
@@ -12,11 +13,11 @@ class PluginService {
   PluginService(PluginLaminar plugin, Keyring keyring)
       : assets = ServiceAssets(plugin, keyring),
         swap = ServiceSwap(plugin, keyring),
-        // margin = ServiceEarn(plugin, keyring),
+        margin = ServiceMargin(plugin, keyring),
         plugin = plugin;
   final ServiceAssets assets;
   final ServiceSwap swap;
-  // final ServiceEarn margin;
+  final ServiceMargin margin;
 
   final PluginLaminar plugin;
 

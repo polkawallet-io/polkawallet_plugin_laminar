@@ -3,8 +3,11 @@ library polkawallet_plugin_laminar;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPage.dart';
+import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPoolDepositPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapHistoryPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapPage.dart';
+import 'package:polkawallet_plugin_laminar/service/graphql.dart';
 import 'package:polkawallet_sdk/api/types/networkParams.dart';
 import 'package:polkawallet_sdk/plugin/homeNavItem.dart';
 import 'package:polkawallet_sdk/plugin/index.dart';
@@ -75,6 +78,17 @@ class PluginLaminar extends PolkawalletPlugin {
       LaminarSwapPage.route: (_) => LaminarSwapPage(this, keyring),
       LaminarSwapHistoryPage.route: (_) =>
           LaminarSwapHistoryPage(this, keyring),
+
+      //margin pages
+      LaminarMarginPage.route: (_) => ClientProvider(
+            child: Builder(
+              builder: (_) => LaminarMarginPage(this, keyring),
+            ),
+            uri: GraphQLConfig['httpUri'],
+            subscriptionUri: GraphQLConfig['wsUri'],
+          ),
+      LaminarMarginPoolDepositPage.route: (_) =>
+          LaminarMarginPoolDepositPage(this, keyring),
     };
   }
 
