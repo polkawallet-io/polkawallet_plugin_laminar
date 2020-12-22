@@ -66,6 +66,8 @@ abstract class _SwapStore with Store {
       txs = ObservableList<LaminarTxSwapData>.of(list.map((e) =>
           LaminarTxSwapData.fromJson(
               Map<String, dynamic>.from(e), laminar_token_decimals)));
+    } else {
+      txs = ObservableList<LaminarTxSwapData>();
     }
   }
 }
