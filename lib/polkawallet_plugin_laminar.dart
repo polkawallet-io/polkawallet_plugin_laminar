@@ -25,13 +25,14 @@ import 'package:polkawallet_plugin_laminar/common/constants.dart';
 class PluginLaminar extends PolkawalletPlugin {
   @override
   final basic = PluginBasicData(
-    name: 'laminar',
+    name: 'laminar-tc2',
     ss58: 42,
     primaryColor: Colors.deepPurple,
     icon: Image.asset(
         'packages/polkawallet_plugin_laminar/assets/images/logo.png'),
     iconDisabled: Image.asset(
         'packages/polkawallet_plugin_laminar/assets/images/logo_gray.png'),
+    jsCodeVersion: 10910,
   );
 
   @override
