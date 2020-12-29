@@ -95,7 +95,7 @@ class _LaminarEntryState extends State<LaminarEntry> {
             Expanded(
               child: Observer(
                 builder: (_) {
-                  if (widget.plugin.sdk.api.connectedNode == null) {
+                  if (widget.plugin.sdk.api?.connectedNode == null) {
                     return Container(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.width / 2),
