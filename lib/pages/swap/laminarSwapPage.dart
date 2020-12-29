@@ -48,7 +48,7 @@ class _LaminarSwapPageState extends State<LaminarSwapPage> {
   Future<void> _fetchData() async {
     final Map res = await widget.plugin.service.swap.subscribeSyntheticPools();
 
-    if (_tokenPool == null) {
+    if (_tokenPool == null && mounted) {
       final LaminarSyntheticPoolTokenData token =
           LaminarSyntheticPoolTokenData.fromJson(res['options'][0]);
       setState(() {

@@ -99,7 +99,8 @@ class _LaminarMarginPageContentState extends State<LaminarMarginPageContent> {
                     Divider(height: 2),
                     LaminarTraderInfoPanel(
                       balanceInt: Fmt.balanceInt(widget.plugin.store.assets
-                          .tokenBalanceMap[acala_stable_coin].amount),
+                              .tokenBalanceMap[acala_stable_coin]?.amount ??
+                          '0'),
                       info:
                           widget.plugin.store.margin.marginTraderInfo[_poolId],
                       decimals: decimals,
