@@ -1,5 +1,5 @@
-import { keyExtractSuri, mnemonicGenerate, cryptoWaitReady } from "@polkadot/util-crypto";
-import { hexToU8a, u8aToHex } from "@polkadot/util";
+import { keyExtractSuri, mnemonicGenerate, cryptoWaitReady, signatureVerify } from "@polkadot/util-crypto";
+import { hexToU8a, u8aToHex, isHex, stringToU8a } from "@polkadot/util";
 import BN from "bn.js";
 import { parseQrCode, getSigner, makeTx, getSubmittable } from "../utils/QrSigner";
 
@@ -367,13 +367,18 @@ async function signBytesAsExtension(api: ApiPromise, password: string, json: any
         keyPair.lock();
       }
       keyPair.decodePkcs8(password);
+      const isDataHex = isHex(json["data"]);
       resolve({
-        signature: u8aToHex(keyPair.sign(hexToU8a(json["data"]))),
+        signature: u8aToHex(keyPair.sign(isDataHex ? hexToU8a(json["data"]) : stringToU8a(json["data"]))),
       });
     } catch (err) {
       resolve({ error: err.message });
     }
   });
+}
+
+async function verifySignature(message: string, signature: string, address: string) {
+  return signatureVerify(message, signature, address);
 }
 
 export default {
@@ -391,4 +396,5 @@ export default {
   addSignatureAndSend,
   signTxAsExtension,
   signBytesAsExtension,
+  verifySignature,
 };
