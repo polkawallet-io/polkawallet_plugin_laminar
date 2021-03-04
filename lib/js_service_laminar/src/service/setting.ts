@@ -1,5 +1,4 @@
 import { ApiPromise } from "@polkadot/api";
-import { SubstrateNetworkKeys } from "../constants/networkSpect";
 
 /**
  * subscribe messages of network state.
@@ -9,12 +8,7 @@ import { SubstrateNetworkKeys } from "../constants/networkSpect";
  * @param {String} msgChannel
  * @param {Function} transfrom result data transfrom
  */
-export async function subscribeMessage(
-  method: any,
-  params: any[],
-  msgChannel: string,
-  transfrom: Function
-) {
+export async function subscribeMessage(method: any, params: any[], msgChannel: string, transfrom: Function) {
   return method(...params, (res: any) => {
     const data = transfrom ? transfrom(res) : res;
     (<any>window).send(msgChannel, data);
@@ -36,12 +30,9 @@ export async function getNetworkConst(api: ApiPromise) {
  * get network properties, and replace polkadot decimals with const 10.
  */
 export async function getNetworkProperties(api: ApiPromise) {
-  const chainProperties = await api.rpc.system.properties();
-  return api.genesisHash.toHuman() == SubstrateNetworkKeys.POLKADOT
-    ? api.registry.createType("ChainProperties", {
-        ...chainProperties,
-        tokenDecimals: 10,
-        tokenSymbol: "DOT",
-      })
-    : chainProperties;
+  return {
+    ss58Format: 42,
+    tokenDecimals: [18],
+    tokenSymbol: ["LAMI"],
+  };
 }

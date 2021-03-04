@@ -132,6 +132,8 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
 
             return Observer(
               builder: (_) {
+                final decimals =
+                    (widget.plugin.networkState.tokenDecimals ?? [18])[0];
                 final Map<String, LaminarPriceData> priceMap =
                     widget.plugin.store.assets.tokenPrices;
                 Widget render;
@@ -210,8 +212,7 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
                                         pairData,
                                         priceMap,
                                         closed: c,
-                                        decimals: widget
-                                            .plugin.networkState.tokenDecimals,
+                                        decimals: decimals,
                                         onRefresh: _refreshData,
                                       );
                                     }).toList()
@@ -230,8 +231,7 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
                                         e,
                                         pairData,
                                         priceMap,
-                                        decimals: widget
-                                            .plugin.networkState.tokenDecimals,
+                                        decimals: decimals,
                                         onRefresh: _refreshData,
                                       );
                                     }).toList(),

@@ -52,7 +52,7 @@ class _LaminarMarginPageContentState extends State<LaminarMarginPageContent> {
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_laminar, 'laminar');
-    final decimals = widget.plugin.networkState.tokenDecimals;
+    final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
     return Scaffold(
       appBar: AppBar(title: Text(dic['flow.margin']), centerTitle: true),
       body: SafeArea(

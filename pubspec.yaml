@@ -1,6 +1,6 @@
 name: polkawallet_plugin_laminar
 description: A new Flutter package project.
-version: 0.0.1
+version: 0.1.5
 author:
 homepage:
 
@@ -16,14 +16,14 @@ dependencies:
   flutter_svg: ^0.18.0
   get_storage: ^1.2.1
   graphql_flutter: ^3.1.0
-  polkawallet_sdk: ^0.1.0
-#  polkawallet_sdk:
-#    path: ../sdk
+#  polkawallet_sdk: ^0.1.0
+  polkawallet_sdk:
+    path: ../sdk
   polkawallet_ui:
-    git:
-      url: https://github.com/polkawallet-io/ui.git
-      ref: 9ff8f1ebbaad3bbda904756f650414cf7cfe3163
-#    path: ../ui
+#    git:
+#      url: https://github.com/polkawallet-io/ui.git
+#      ref: 9ff8f1ebbaad3bbda904756f650414cf7cfe3163
+    path: ../ui
 
 dev_dependencies:
   flutter_test:

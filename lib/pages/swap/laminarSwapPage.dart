@@ -121,7 +121,7 @@ class _LaminarSwapPageState extends State<LaminarSwapPage> {
   }
 
   Future<void> _calcSwapAmount(String supply, String target) async {
-    final decimals = widget.plugin.networkState.tokenDecimals;
+    final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
     if (supply == null) {
       if (target.isNotEmpty) {
         double price = Fmt.balanceDouble(
@@ -159,7 +159,7 @@ class _LaminarSwapPageState extends State<LaminarSwapPage> {
 
   Future<void> _onSubmit() async {
     if (_formKey.currentState.validate()) {
-      final decimals = widget.plugin.networkState.tokenDecimals;
+      final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
       final pay = _amountPayCtrl.text.trim();
       final params = [
         // params.poolId
@@ -222,7 +222,7 @@ class _LaminarSwapPageState extends State<LaminarSwapPage> {
         final dic = I18n.of(context).getDic(i18n_full_dic_laminar, 'laminar');
         final dicAssets =
             I18n.of(context).getDic(i18n_full_dic_laminar, 'common');
-        final decimals = widget.plugin.networkState.tokenDecimals;
+        final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
         final List tokens = widget.plugin.networkConst['syntheticTokens']
             ['syntheticCurrencyIds'];
         tokens.add(widget.plugin.networkState.tokenSymbol);

@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.1.5] - 20210304
 
-* TODO: Describe initial release.
+* update for wallet app v1.1.5.

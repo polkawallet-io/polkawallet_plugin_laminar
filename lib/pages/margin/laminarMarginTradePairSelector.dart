@@ -78,7 +78,7 @@ class _LaminarMarginTradePairSelectorState
     );
     return Observer(
       builder: (_) {
-        final decimals = widget.plugin.networkState.tokenDecimals;
+        final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
         final poolId = _poolId ?? widget.initialPoolId;
         final List<LaminarMarginPairData> pairs =
             widget.plugin.store.margin.marginPoolInfo[poolId].options.toList();

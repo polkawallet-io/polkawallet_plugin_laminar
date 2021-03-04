@@ -39,6 +39,7 @@ class _LaminarMarginPoolDepositPageState
 
   Future<void> _onSubmit() async {
     if (_formKey.currentState.validate()) {
+      final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
       final LaminarMarginPoolDepositPageParams args =
           ModalRoute.of(context).settings.arguments;
       final String amt = _amountCtrl.text.trim();
@@ -47,7 +48,7 @@ class _LaminarMarginPoolDepositPageState
         // params.poolId
         args.poolId,
         // params.amount
-        Fmt.tokenInt(amt, widget.plugin.networkState.tokenDecimals).toString(),
+        Fmt.tokenInt(amt, decimals).toString(),
       ];
       final res = (await Navigator.of(context).pushNamed(TxConfirmPage.route,
           arguments: TxConfirmParams(
@@ -86,7 +87,7 @@ class _LaminarMarginPoolDepositPageState
     final dicAssets = I18n.of(context).getDic(i18n_full_dic_laminar, 'common');
     final LaminarMarginPoolDepositPageParams params =
         ModalRoute.of(context).settings.arguments;
-    final decimals = widget.plugin.networkState.tokenDecimals;
+    final decimals = (widget.plugin.networkState.tokenDecimals ?? [18])[0];
     final balance = params.isWithdraw
         ? Fmt.balanceDouble(
             widget
