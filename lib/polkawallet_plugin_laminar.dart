@@ -2,6 +2,7 @@ library polkawallet_plugin_laminar;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPoolDepositPage.dart';
@@ -28,6 +29,7 @@ class PluginLaminar extends PolkawalletPlugin {
     name: 'laminar-tc2',
     ss58: 42,
     primaryColor: Colors.deepPurple,
+    gradientColor: Colors.purple,
     icon: Image.asset(
         'packages/polkawallet_plugin_laminar/assets/images/logo.png'),
     iconDisabled: Image.asset(
@@ -53,12 +55,14 @@ class PluginLaminar extends PolkawalletPlugin {
     return [
       HomeNavItem(
         text: 'Flow',
-        icon: Image(
-            image: AssetImage('assets/images/flow_dark.png',
-                package: 'polkawallet_plugin_laminar')),
-        iconActive: Image(
-            image: AssetImage('assets/images/flow.png',
-                package: 'polkawallet_plugin_laminar')),
+        icon: SvgPicture.asset(
+          'packages/polkawallet_plugin_laminar/assets/images/flow.svg',
+          color: Theme.of(context).disabledColor,
+        ),
+        iconActive: SvgPicture.asset(
+          'packages/polkawallet_plugin_laminar/assets/images/flow.svg',
+          color: Theme.of(context).primaryColor,
+        ),
         content: LaminarEntry(this, keyring),
       )
     ];

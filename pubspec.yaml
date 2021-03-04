@@ -42,8 +42,7 @@ flutter:
     - lib/js_service_laminar/dist/main.js
     - assets/images/logo.png
     - assets/images/logo_gray.png
-    - assets/images/flow.png
-    - assets/images/flow_dark.png
+    - assets/images/flow.svg
     - assets/images/LAMI.png
     - assets/images/AUSD.png
     - assets/images/swap.svg
