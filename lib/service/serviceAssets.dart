@@ -48,6 +48,7 @@ class ServiceAssets {
           .map((e) => TokenBalanceData(
                 name: e['symbol'],
                 symbol: e['symbol'],
+                decimals: 18,
                 amount: e['balance']['free'].toString(),
               ))
           .toList());
