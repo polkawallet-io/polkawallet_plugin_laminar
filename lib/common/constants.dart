@@ -3,14 +3,14 @@ const int SECONDS_OF_YEAR = 365 * 24 * 60 * 60; // seconds of one year
 
 const node_list = [
   {
-    'name': 'Laminar TC2',
+    'name': 'Laminar TC3',
     'ss58': 42,
-    'endpoint': 'wss://node-6729167516986527744.jm.onfinality.io/ws',
+    'endpoint': 'wss://node-6787234140909940736.jm.onfinality.io/ws',
   },
   {
-    'name': 'Laminar TC2 Node 2',
+    'name': 'Laminar TC3 Node 1',
     'ss58': 42,
-    'endpoint': 'wss://node-6729167516973944832.rz.onfinality.io/ws',
+    'endpoint': 'wss://testnet-node-1.laminar-chain.laminar.one/ws',
   },
 ];
 

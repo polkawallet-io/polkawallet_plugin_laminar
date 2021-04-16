@@ -26,7 +26,7 @@ import 'package:polkawallet_plugin_laminar/common/constants.dart';
 class PluginLaminar extends PolkawalletPlugin {
   @override
   final basic = PluginBasicData(
-    name: 'laminar-tc2',
+    name: 'laminar-tc3',
     ss58: 42,
     primaryColor: Colors.deepPurple,
     gradientColor: Colors.purple,

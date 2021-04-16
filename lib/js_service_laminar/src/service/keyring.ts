@@ -4,7 +4,7 @@ import BN from "bn.js";
 import { parseQrCode, getSigner, makeTx, getSubmittable } from "../utils/QrSigner";
 import metaDataMap from "../constants/networkMetadata";
 import { TypeRegistry } from "@polkadot/types";
-import Metadata from "@polkadot/metadata/Metadata";
+import { Metadata } from "@polkadot/metadata";
 
 import { Keyring } from "@polkadot/keyring";
 import { KeypairType } from "@polkadot/util-crypto/types";
@@ -364,7 +364,7 @@ async function signTxAsExtension(password: string, json: any) {
       let registry: any;
       if (!(<any>window).api) {
         registry = new TypeRegistry();
-        registry.setMetadata(new Metadata(registry, metaDataMap["laminar-tc2"]));
+        registry.setMetadata(new Metadata(registry, metaDataMap["laminar-tc3"]));
       } else {
         registry = (<any>window).api.registry;
       }
