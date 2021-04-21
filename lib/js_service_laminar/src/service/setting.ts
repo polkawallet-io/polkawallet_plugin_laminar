@@ -34,5 +34,6 @@ export async function getNetworkProperties(api: ApiPromise) {
     ss58Format: 42,
     tokenDecimals: [18],
     tokenSymbol: ["LAMI"],
+    genesisHash: api.genesisHash,
   };
 }

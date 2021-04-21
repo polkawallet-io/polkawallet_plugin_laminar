@@ -42,3 +42,6 @@ const Map<String, String> laminar_leverage_map = {
   'Twenty': 'x20',
 };
 final BigInt laminarIntDivisor = BigInt.parse('1000000000000000000');
+
+const laminar_genesis_hash =
+    '0x0679c5a52887843b46cc6fa26e5fb9b6f0a4fa41ca1161c01eadacc4748cb203';

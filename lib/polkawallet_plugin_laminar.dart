@@ -27,6 +27,7 @@ class PluginLaminar extends PolkawalletPlugin {
   @override
   final basic = PluginBasicData(
     name: 'laminar-tc3',
+    genesisHash: laminar_genesis_hash,
     ss58: 42,
     primaryColor: Colors.deepPurple,
     gradientColor: Colors.purple,
