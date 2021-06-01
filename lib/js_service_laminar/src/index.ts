@@ -9,11 +9,7 @@ import laminar from "./service/laminar";
 
 // send message to JSChannel: PolkaWallet
 function send(path: string, data: any) {
-  if (window.location.href.match("https://localhost:8080/")) {
-    PolkaWallet.postMessage(JSON.stringify({ path, data }));
-  } else {
-    console.log(path, data);
-  }
+  console.log(JSON.stringify({ path, data }));
 }
 send("log", "laminar main js loaded");
 (<any>window).send = send;

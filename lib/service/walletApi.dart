@@ -6,7 +6,7 @@ class WalletApi {
   static Future<String> getLaminarTokens(String address) async {
     try {
       Response res = await post(
-        'https://laminar-faucet.herokuapp.com/faucet/web-endpoint',
+        Uri.parse('https://laminar-faucet.herokuapp.com/faucet/web-endpoint'),
         headers: {"Content-type": "application/json"},
         body: jsonEncode({"address": address}),
       );

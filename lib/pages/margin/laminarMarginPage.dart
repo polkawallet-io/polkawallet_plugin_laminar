@@ -99,7 +99,7 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
     final dic = I18n.of(context).getDic(i18n_full_dic_laminar, 'laminar');
     return Query(
       options: QueryOptions(
-        documentNode: gql(openedPositionQuery),
+        document: gql(openedPositionQuery),
         variables: <String, String>{
           'signer': widget.keyring.current.address,
         },
@@ -113,7 +113,7 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
         final Future<QueryResult> Function() refreshOpened = refetch;
         return Query(
           options: QueryOptions(
-            documentNode: gql(closedPositionQuery),
+            document: gql(closedPositionQuery),
             variables: <String, String>{
               'signer': widget.keyring.current.address,
             },
@@ -139,8 +139,8 @@ class _LaminarMarginPageState extends State<LaminarMarginPage> {
                 Widget render;
                 if (result.hasException || resultClosed.hasException) {
                   render = Text(result.exception.toString());
-                } else if (result.loading ||
-                    resultClosed.loading ||
+                } else if (result.data == null ||
+                    resultClosed.data == null ||
                     widget.plugin.store.margin.marginTokens.length == 0) {
                   render = const Center(
                     child: CupertinoActivityIndicator(),

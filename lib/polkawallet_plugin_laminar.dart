@@ -35,7 +35,7 @@ class PluginLaminar extends PolkawalletPlugin {
         'packages/polkawallet_plugin_laminar/assets/images/logo.png'),
     iconDisabled: Image.asset(
         'packages/polkawallet_plugin_laminar/assets/images/logo_gray.png'),
-    jsCodeVersion: 20101,
+    jsCodeVersion: 20601,
   );
 
   @override
