@@ -4,11 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:polkawallet_plugin_laminar/common/constants.dart';
+import 'package:polkawallet_plugin_laminar/pages/currencySelectPage.dart';
+import 'package:polkawallet_plugin_laminar/pages/laminarEntry.dart';
 import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/margin/laminarMarginPoolDepositPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapHistoryPage.dart';
 import 'package:polkawallet_plugin_laminar/pages/swap/laminarSwapPage.dart';
 import 'package:polkawallet_plugin_laminar/service/graphql.dart';
+import 'package:polkawallet_plugin_laminar/service/index.dart';
+import 'package:polkawallet_plugin_laminar/store/cache/storeCache.dart';
+import 'package:polkawallet_plugin_laminar/store/index.dart';
 import 'package:polkawallet_sdk/api/types/networkParams.dart';
 import 'package:polkawallet_sdk/plugin/homeNavItem.dart';
 import 'package:polkawallet_sdk/plugin/index.dart';
@@ -16,12 +22,6 @@ import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
 import 'package:polkawallet_ui/pages/accountQrCodePage.dart';
 import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_plugin_laminar/pages/currencySelectPage.dart';
-import 'package:polkawallet_plugin_laminar/pages/laminarEntry.dart';
-import 'package:polkawallet_plugin_laminar/store/cache/storeCache.dart';
-import 'package:polkawallet_plugin_laminar/store/index.dart';
-import 'package:polkawallet_plugin_laminar/service/index.dart';
-import 'package:polkawallet_plugin_laminar/common/constants.dart';
 
 class PluginLaminar extends PolkawalletPlugin {
   @override
@@ -116,6 +116,8 @@ class PluginLaminar extends PolkawalletPlugin {
   }
 
   void _loadCacheData(KeyPairData acc) {
+    loadBalances(acc);
+
     balances.setTokens([]);
 
     _store.swap.loadCache(acc.pubKey);
