@@ -46,6 +46,7 @@ class ServiceAssets {
 
       callback(_tokenBalances.values
           .map((e) => TokenBalanceData(
+                id: e['symbol'],
                 name: e['symbol'],
                 symbol: e['symbol'],
                 decimals: 18,

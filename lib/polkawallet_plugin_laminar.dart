@@ -18,6 +18,7 @@ import 'package:polkawallet_plugin_laminar/store/index.dart';
 import 'package:polkawallet_sdk/api/types/networkParams.dart';
 import 'package:polkawallet_sdk/plugin/homeNavItem.dart';
 import 'package:polkawallet_sdk/plugin/index.dart';
+import 'package:polkawallet_sdk/plugin/store/balances.dart';
 import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
 import 'package:polkawallet_ui/pages/accountQrCodePage.dart';
@@ -50,6 +51,11 @@ class PluginLaminar extends PolkawalletPlugin {
         'AUSD': Image.asset(
             'packages/polkawallet_plugin_laminar/assets/images/AUSD.png'),
       };
+
+  @override
+  List<TokenBalanceData> get noneNativeTokensAll {
+    return store?.assets?.tokenBalanceMap?.values?.toList();
+  }
 
   @override
   List<HomeNavItem> getNavItems(BuildContext context, Keyring keyring) {

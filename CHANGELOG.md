@@ -1,3 +1,7 @@
+## [0.2.8] - 20210811
+
+* bump polkawallet_sdk: v0.2.8.
+
 ## [0.2.1] - 20210609
 
 * bump polkawallet_sdk: v0.2.1.
