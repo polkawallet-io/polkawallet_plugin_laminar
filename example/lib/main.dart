@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'package:polkawallet_plugin_laminar/polkawallet_plugin_laminar.dart';
 import 'package:polkawallet_sdk/api/types/networkParams.dart';
 import 'package:polkawallet_sdk/plugin/index.dart';
@@ -98,7 +97,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _startPlugin() async {
-    await _keyring.init();
+    await _keyring.init([42]);
 
     await _network.beforeStart(_keyring);
     final connected = await _network.start(_keyring);
